@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -7,10 +7,13 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
 
 import Dashboard from './pages/Dashboard';
 import WorkflowPage from './pages/WorkflowPage';
 import ApplicationPage from './pages/ApplicationPage';
+import ScorecardPage from './pages/ScorecardPage';
+import DeploymentPage from './pages/DeploymentPage';
 
 const theme = createTheme({
   palette: {
@@ -32,8 +35,23 @@ function App() {
           <AppBar position="static">
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                Meritz 신용평가 워크플로우 시스템
+                Credit Evaluation BPM System
               </Typography>
+              <Button color="inherit" component={Link} to="/dashboard">
+                Dashboard
+              </Button>
+              <Button color="inherit" component={Link} to="/workflow">
+                Workflows
+              </Button>
+              <Button color="inherit" component={Link} to="/scorecard">
+                Scorecards
+              </Button>
+              <Button color="inherit" component={Link} to="/deployment">
+                Deployments
+              </Button>
+              <Button color="inherit" component={Link} to="/application">
+                Applications
+              </Button>
             </Toolbar>
           </AppBar>
           
@@ -43,6 +61,8 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/workflow" element={<WorkflowPage />} />
               <Route path="/workflow/:id" element={<WorkflowPage />} />
+              <Route path="/scorecard" element={<ScorecardPage />} />
+              <Route path="/deployment" element={<DeploymentPage />} />
               <Route path="/application" element={<ApplicationPage />} />
               <Route path="/application/:id" element={<ApplicationPage />} />
             </Routes>
